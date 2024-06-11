@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Configuracion Final</title>
+
+    <link rel="icon" href="assets/logos/orange_transparent.png" type="image/x-icon"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="libraries/bootstrap/css/bootstrap.css">
+    <script src="libraries/bootstrap/js/bootstrap.js"></script>
+
+    <!-- jQuery -->
+    <script src="libraries/jquery/jquery-3.7.1.js"></script>
+    <script src="libraries/jquery/jquery.session.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/image.css">
+    <link rel="stylesheet" href="styles/text.css">
+    <link rel="stylesheet" href="styles/button.css">
+    <link rel="stylesheet" href="styles/input.css">
+    <link rel="stylesheet" href="styles/popup.css">
+
+    <script src="./funciones/funciones.js"></script>
+    <script src="./funciones/api.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            let site = sessionStorage.getItem("siteName");
+            let siteValue = document.getElementById("site");
+            siteValue.textContent = site
+            let nom = sessionStorage.getItem("nom");
+            let nomValue = document.getElementById("nom");
+            nomValue.textContent = nom;
+
+            let userDefinition = JSON.parse(sessionStorage.getItem("userdef"));
+            let divResto = document.getElementById("divResto");
+            let divFormatos = document.getElementById("divFormatos");
+
+            const propertiesToPrint = {};
+            if (userDefinition.fullName !== "" && userDefinition.fullName !== "0") {
+                propertiesToPrint["Nombre Completo"] = userDefinition.fullName;
+            } else if (userDefinition.firstName && userDefinition.lastName) {
+                propertiesToPrint["Nombre"] = userDefinition.firstName;
+                propertiesToPrint["Apellido"] = userDefinition.lastName;
+            } else {
+                propertiesToPrint["Nombre"] = "0";
+                propertiesToPrint["Apellido"] = "0";
+            }
+
+            propertiesToPrint["userId"] = userDefinition.userId;
+            propertiesToPrint["cardId"] = userDefinition.cardId;
+            propertiesToPrint["departmento"] = userDefinition.departmentName;
+            propertiesToPrint["titulo"] = userDefinition.title;
+            propertiesToPrint["Grupo Limite"] = userDefinition.effectiveLimitGroup;
+            propertiesToPrint["Fecha Inactivo"] = userDefinition.futureInactiveData;
+            propertiesToPrint["card ID2"] = userDefinition.cardId2;
+            propertiesToPrint["email"] = userDefinition.email;
+
+            if (userDefinition.firstName && userDefinition.lastName) {
+                delete propertiesToPrint["Nombre Completo"];
+            }
+            const entries = Object.entries(propertiesToPrint).sort((a, b) => {
+                const valueA = Number(a[1]);
+                const valueB = Number(b[1]);
+                return valueA - valueB;
+            });
+
+            for (let [key, value] of entries) {
+                const claveElemento = document.createElement("span");
+                claveElemento.textContent = key + " : ";
+                claveElemento.classList.add("text-bold");
+
+                const valorElemento = document.createElement("span");
+                valorElemento.textContent = value;
+                valorElemento.classList.add("text-keyboard");
+
+                const parrafo = document.createElement("p");
+                parrafo.appendChild(claveElemento);
+                parrafo.appendChild(valorElemento);
+
+                divResto.appendChild(parrafo);
+            }
+
+            divFormatos.innerHTML += `<p>Formato de Fecha: ${userDefinition.dateFormat}</p>`;
+            divFormatos.innerHTML += `<p>Formato de Número: ${userDefinition.numberFormat}</p>`;
+        });
+    </script>
+</head>
+<body>
+
+<div class="container-fluid" style="overflow: visible">
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <div class="col-md-auto">
+                <div class="row justify-content-center col-md-auto">
+                    <img src="assets/logos/logo_transparent.png" alt="Polytex Logo" class="img-polytex-ppal">
+                    <div style="text-align: center; overflow: auto">
+                        <img class="img-tecnico" src="assets/icons/user.png" alt="avatar">
+                        <p class="text-white" id="nom" style="font-size: small">nom</p>
+                        <p class="text-black-50" id="site" style="font-size: x-large">site</p>
+                        <br>
+                        <h2 class="text-white-50"> Configuración Final de los Campos: </h2>
+                        <br>
+                        <div class="row justify-content-center col-md-auto">
+                        <div class="button-black-but-but" id="divFormatos"></div>
+                        <div class="button-orange-site" id="divResto"></div>
+                        </div>
+                            <br>
+                        <br>
+                        <button id="bt_okUser" type="button" class="btn btn-success" onclick="sendConfig()">
+                            <img src="/assets/icons/check.png" alt="Confirmar" class="img-final">
+                        </button>
+                        <br>
+                        <br>
+                        <button id="bet_noUser" type="button" class="btn btn-danger"
+                                onclick="window.location.href= 'config.html'">
+                            <img src="/assets/icons/alert.png" alt="Modificar" class="img-final">
+                        </button>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

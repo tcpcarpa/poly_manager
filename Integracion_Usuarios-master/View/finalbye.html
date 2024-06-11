@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>finalbye</title>
+
+    <link rel="icon" href="assets/logos/orange_transparent.png" type="image/x-icon"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="libraries/bootstrap/css/bootstrap.css">
+    <script src="libraries/bootstrap/js/bootstrap.js"></script>
+
+    <!-- jQuery -->
+    <script src="libraries/jquery/jquery-3.7.1.js"></script>
+    <script src="libraries/jquery/jquery.session.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/image.css">
+    <link rel="stylesheet" href="styles/text.css">
+    <link rel="stylesheet" href="styles/button.css">
+    <link rel="stylesheet" href="styles/input.css">
+    <link rel="stylesheet" href="styles/popup.css">
+
+    <script src="./funciones/funciones.js"></script>
+    <script>
+        $(document).ready(function () {
+            const nom = sessionStorage.getItem("nom");
+            $('#nombreUsuario').text(nom);
+            const id = sessionStorage.getItem("siteId");
+            $('#siteId').text(id);
+            const val = sessionStorage.getItem("val");
+            $('#val').text(val);
+            const noval = sessionStorage.getItem("noval");
+            $('#noVal').text(noval);
+        });
+    </script>
+
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <div class="row justify-content-center">
+                <div class="col-md-auto">
+                    <img src="assets/logos/logo_transparent.png" alt="Polytex Logo" class="img-polytex-ppal">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <img class="col-md-auto" src="assets/icons/user.png" style="width: 120px;height: 100px" alt="usuario">
+            </div>
+            <div class="col-md-auto" style="text-align: center">
+                <span class="text-bold" id="nombreUsuario"> nom</span>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-auto form-group">
+                    <h1 class="text-white-50">Operación Realizada</h1>
+                    <div class="col-md-auto" style="text-align: center">
+                        <h4 style="color: grey"> Usuarios Exportados: <span id="validos">val</span></h4>
+                        <h4 style="color: grey"> Usuarios NO Validos:<span id="noValidos">noval</span></h4>
+                    </div>
+                    <br>
+                    <div id="listaContainer"></div>
+                    <br>
+                    <br>
+                    <div class="row justify-content-center">
+                        <button id="bt_logout" type="button" class="btn-danger"
+                                style="font-size: x-large" onclick="logout()"> Salir
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

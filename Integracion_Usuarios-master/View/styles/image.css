@@ -1,0 +1,93 @@
+.img-polytex-ppal {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    -webkit-user-select: none;
+}
+
+.img-polytex-secondary {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    -webkit-user-select: none;
+}
+
+.img-polytex-clothing {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    -webkit-user-select: none;
+}
+
+.img-settings {
+    width: 80px;
+    height: 80px;
+    -webkit-user-select: none;
+}
+
+.img-close {
+    width: 100%;
+    min-width: 40px;
+    max-width: 50px;
+    height: auto;
+    -webkit-user-select: none;
+}
+
+.img-keyboard {
+    width: 100%;
+    max-width: 40px;
+    height: auto;
+    -webkit-user-select: none;
+}
+
+.img-keyboard-index {
+    width: 100%;
+    max-width: 120px;
+    height: auto;
+    padding: 24px;
+    -webkit-user-select: none;
+}
+
+.img-clothes {
+    width: 100%;
+    max-width: 80px;
+    height: auto;
+    -webkit-user-select: none;
+}
+
+.img-tecnico {
+    width: 100%;
+    max-width: 3rem;
+    height: auto;
+    -webkit-user-select: none;
+}
+
+.img-final {
+    width: 40px;
+    height: 40px;
+    -webkit-user-select: none;
+}
+
+.img-input {
+    width: 55px;
+    height: 55px;
+    -webkit-user-select: none;
+}
+
+.img-structure {
+    width: 60px;
+    height: 60px;
+    -webkit-user-select: none;
+}
+
+.img-scroll {
+    width: 40px;
+    height: 40px;
+    -webkit-user-select: none;
+}
+
+.img-def {
+    width: 25px;
+    height: 25px;
+    -webkit-user-select: none;
+}

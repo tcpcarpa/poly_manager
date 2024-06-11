@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Configuracion</title>
+
+    <link rel="icon" href="assets/logos/orange_transparent.png" type="image/x-icon"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="libraries/bootstrap/css/bootstrap.css">
+    <script src="libraries/bootstrap/js/bootstrap.js"></script>
+
+    <!-- jQuery -->
+    <script src="libraries/jquery/jquery-3.7.1.js"></script>
+    <script src="libraries/jquery/jquery.session.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/image.css">
+    <link rel="stylesheet" href="styles/text.css">
+    <link rel="stylesheet" href="styles/button.css">
+    <link rel="stylesheet" href="styles/input.css">
+    <link rel="stylesheet" href="styles/popup.css">
+
+    <script src="./funciones/funciones.js"></script>
+    <script src="./funciones/api.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            let site = sessionStorage.getItem("siteName");
+            let siteValue = document.getElementById("site");
+            siteValue.textContent = site
+            let nom = sessionStorage.getItem("nom");
+            let nomValue = document.getElementById("nom");
+            nomValue.textContent = nom;
+
+            let userDefinitionString = sessionStorage.getItem("userdef");
+            console.log(userDefinitionString);
+            let content = userDefinitionString.match(/\{(.*?)}/)[1];
+
+            let userDefinition = {};
+            content.split(',').forEach(pair => {
+                let [key, value] = pair.split('=');
+                userDefinition[key.trim()] = value.trim();
+            });
+
+            document.getElementById("userId").placeholder = userDefinition.userId || "0";
+            document.getElementById("cardId").placeholder = userDefinition.cardId || "0";
+            document.getElementById("firstName").placeholder = userDefinition.firstName || "0";
+            document.getElementById("lastName").placeholder = userDefinition.lastName || "0";
+            document.getElementById("fullName").placeholder = userDefinition.fullName || "0";
+            document.getElementById("departmentName").placeholder = userDefinition.departmentName || "0";
+            document.getElementById("title").placeholder = userDefinition.title || "0";
+            document.getElementById("effectiveLimitGroup").placeholder = userDefinition.effectiveLimitGroup || "0";
+            document.getElementById("futureInactiveData").placeholder = userDefinition.futureInactiveData || "0";
+            document.getElementById("card2").placeholder = userDefinition.cardId2 || "0";
+            document.getElementById("mail").placeholder = userDefinition.email || "0";
+            document.getElementById("dateFormat").placeholder = userDefinition.dateFormat;
+
+            let dateFormatInput = document.getElementById("dateFormat");
+            let dateFormat = dateFormatInput.value.trim();
+            if (!dateFormat) {
+                dateFormat = dateFormatInput.placeholder;
+            }
+            dateFormatInput.value = dateFormat;
+
+            let numberFormat = userDefinition.numberFormat;
+            if (numberFormat === "Hexadecimal") {
+                document.getElementById("hexadecimal").checked = true;
+            } else {
+                document.getElementById("decimal").checked = true;
+            }
+            if (userDefinition.fullName !== '0' && userDefinition.firstName !== '0' && userDefinition.lastName !== '0') {
+                document.getElementById("nombreApellidoContainer").style.display = "block";
+                document.getElementById("fullnanombreCompleto").style.display = "block";
+                document.getElementById("mostrarNombreCompleto").checked = true;
+            } else if (userDefinition.firstName !== '0' || userDefinition.lastName !== '0') {
+                document.getElementById("fullnanombreCompleto").style.display = "none";
+                document.getElementById("nombreApellidoContainer").style.display = "block";
+                document.getElementById("mostrarNombreCompleto").checked = false;
+            } else {
+                document.getElementById("fullnanombreCompleto").style.display = "block";
+                document.getElementById("nombreApellidoContainer").style.display = "none";
+                document.getElementById("mostrarNombreCompleto").checked = true;
+            }
+        });
+    </script>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row" style="overflow: visible">
+        <div class="col-md-12 form-group">
+            <div class="col-md-auto">
+                <div class="row justify-content-center col-md-auto">
+                    <img src="assets/logos/logo_transparent.png" alt="Polytex Logo" class="img-polytex-ppal">
+                    <div style="text-align: center; overflow: auto">
+                        <img class="img-tecnico" src="assets/icons/user.png" alt="avatar">
+                        <p class="text-white" id="nom" style="font-size: small">nom</p>
+                        <p class="text-black-50" id="site" style="font-size: x-large">site</p>
+                        <h2 class="text-white-50" style="margin-bottom: 20px"> Numere los campos en orden del
+                            CSV </h2>
+                        <br>
+                        <form id="loginForm" class="form-check-inline" style="margin-right: 110px">
+                            <p class="text-bold" style="text-align: right"><label for="userId">User ID:</label><input
+                                    type="number" style="margin-left: 12px" id="userId" maxlength="2"
+                                    pattern="(0?[1-9]|1[0-2])" oninput="validar(this)"></p>
+                            <p class="text-bold" style="text-align: right"><label for="cardId">Card ID:</label><input
+                                    type="number" style="margin-left: 12px" id="cardId" maxlength="2"
+                                    pattern="(0?[1-9]|1[0-2])" oninput="validar(this)"></p>
+                            <div class="text-secondary" style="text-align: right; margin-top: 24px">
+                                <input type="radio" id="hexadecimal" name="numberFormat" value="hexadecimal">
+                                <label for="hexadecimal">Hexadecimal</label>
+                                <input type="radio" style="margin-left: 8px" id="decimal" name="numberFormat"
+                                       value="decimal" checked>
+                                <label for="decimal">Decimal</label>
+                            </div>
+                            <br>
+
+                            <div id="nombreApellidoContainer">
+                                <p class="text-bold" style="text-align: right"><label
+                                        for="firstName">Nombre:</label><input type="number" style="margin-left: 12px"
+                                                                              id="firstName" maxlength="2"
+                                                                              pattern="(0?[1-9]|1[0-2])"
+                                                                              oninput="validar(this)"></p>
+                                <p class="text-bold" style="text-align: right"><label
+                                        for="lastName">Apellido:</label><input type="number" style="margin-left: 12px"
+                                                                               id="lastName" maxlength="2"
+                                                                               pattern="(0?[1-9]|1[0-2])"
+                                                                               oninput="validar(this)"></p>
+                            </div>
+                            <div id="fullnanombreCompleto" style="display: none;">
+                                <p class="text-bold" style="text-align: right"><label for="fullName">Nombre
+                                    Completo:</label><input type="number" style="margin-left: 12px" id="fullName"
+                                                            maxlength="2" pattern="(0?[1-9]|1[0-2])"
+                                                            oninput="validar(this)"></p>
+                            </div>
+                            <label class="text-secondary" style="margin-left: 150px; margin-top: 10px"
+                                   for="mostrarNombreCompleto">Nombre Completo</label>
+                            <input type="checkbox" id="mostrarNombreCompleto" onclick="toggleNombreCompleto()">
+                            <br>
+                            <br>
+
+                            <p class="text-bold" style="text-align: right"><label
+                                    for="departmentName">Departamento:</label><input type="number"
+                                                                                     style="margin-left: 12px"
+                                                                                     id="departmentName" maxlength="2"
+                                                                                     pattern="(0?[1-9]|1[0-2])"
+                                                                                     oninput="validar(this)"></p>
+                            <p class="text-bold" style="text-align: right"><label for="title">Titulo:</label><input
+                                    type="number" style="margin-left: 12px" id="title" maxlength="2"
+                                    pattern="(0?[1-9]|1[0-2])" oninput="validar(this)"></p>
+                            <p class="text-bold" style="text-align: right"><label for="effectiveLimitGroup">Grupo
+                                Limite:</label><input type="number" style="margin-left: 12px" id="effectiveLimitGroup"
+                                                      maxlength="2" pattern="(0?[1-9]|1[0-2])" oninput="validar(this)">
+                            </p>
+                            <div class="text-secondary" style="text-align: right; margin-top: 25px">
+                                <label for="dateFormat">Formato de Fecha:</label>
+                                <select id="dateFormat" style="width: 180px; margin-left: 6px">
+                                    <option value="YYYY-MM-DD">AAAA-MM-DD</option>
+                                    <option value="DD-MM-YYYY">DD-MM-AAAA</option>
+                                    <option value="MM-DD-YYYY">MM-DD-AAAA</option>
+                                    <option value="YYYY/MM/DD">AAAA/MM-/DD</option>
+                                    <option value="DD/MM/YYYY">DD/MM/AAAA</option>
+                                    <option value="MM/DD/YYYY">MM/DD/AAAA</option>
+                                    <option value="" selected></option>
+
+                                </select>
+                            </div>
+                            <br>
+                            <p class="text-bold" style="text-align: right"><label for="futureInactiveData">Fecha
+                                Final:</label><input type="number" style="margin-left: 12px" id="futureInactiveData"
+                                                     maxlength="2" pattern="(0?[1-9]|1[0-2])" oninput="validar(this)">
+                            </p>
+                            <p class="text-bold" style="text-align: right"><label for="card2">Card ID2:</label><input
+                                    type="number" style="margin-left: 12px" id="card2" maxlength="2"
+                                    pattern="(0?[1-9]|1[0-2])" oninput="validar(this)"></p>
+                            <p class="text-bold" style="text-align: right"><label for="mail">Email:</label><input
+                                    type="number" style="margin-left: 12px" id="mail" maxlength="2"
+                                    pattern="(0?[1-9]|1[0-2])" oninput="validar(this)"></p>
+                            <br>
+                            <br>
+                            <br>
+
+                            <button id="bt_login" type="button" class="btn btn-success" onclick="config()">
+                                <img src="/assets/icons/check.png" alt="Ok" class="img-final">
+                            </button>
+                            <br>
+                            <br>
+                            <button id="bet_noUser" type="button" class="btn btn-danger"
+                                    onclick="window.location.href= 'sites.html'">
+                                <img src="/assets/icons/alert.png" alt="Atràs" class="img-final">
+                            </button>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

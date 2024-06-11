@@ -1,0 +1,14 @@
+/* Keyboard Styles */
+.input-id {
+    font-size: 25px;
+    font-weight: bold;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 20em;
+    height: 3em;
+    max-height: 12em;
+    text-align: center;
+    -webkit-user-select: none;
+}
+/* ---------------- */

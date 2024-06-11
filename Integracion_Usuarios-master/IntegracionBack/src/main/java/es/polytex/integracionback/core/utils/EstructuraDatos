@@ -1,0 +1,72 @@
+
+[
+  {
+    "id": 0,
+    "name": "string",
+    "mode": 0,
+    "settings": {
+      "additionalProp1": "string",
+      "additionalProp2": "string",
+      "additionalProp3": "string"
+    }
+  }
+]
+
+{
+  "config":{
+    "user": "",
+    "pass": "",
+    "separator": "",
+    "favSiteId": 0,
+    "userDefinition": {
+      "userId": 1,
+      "cardId": 2,
+      "firstName": 3,
+      "lastName": 4,
+      "departament": 5,
+      "title": 6,
+      "effectiveLimitGroup": 7,
+      "isDisabledOrDisabledDate": 8,
+      "simpleOrExtendedModeQuantityBalance": 9,
+      "rfidModeItemNameGroupSHORTQuantitybalance": 10,
+      "cardId2": 11,
+      "email": 12,
+
+    }
+  }
+}
+
+{
+  "users": [
+    {
+      "userId": "string",
+      "cardId": "string",
+      "firstName": "string",
+      "lastName": "string",
+      "DepartmentName": "string",
+      "title": "string",
+      "effectiveLimitGroup": "string",
+      "isDisabledOrDisabledDate": "string",
+      "simpleOrExtendedModeQuantityBalance": "string",
+      "rfidModeItemNameGroupSHORTQuantitybalance": "string",
+      "cardId2": "string",
+      "email": "string",
+    }
+  ],
+  "siteId": 0
+}
+
+{
+        "status": "Completed",
+        "results": [
+        {
+        "cardId": "string",
+        "isValid": true,
+        "isCommitted": true,
+        "messages": [
+        "string"
+        ]
+        }
+        ],
+        "message": "string"
+        }

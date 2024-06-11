@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Site Info</title>
+    <link rel="icon" href="assets/logos/orange_transparent.png" type="image/x-icon"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="libraries/bootstrap/css/bootstrap.css">
+    <script src="libraries/bootstrap/js/bootstrap.js"></script>
+
+    <!-- jQuery -->
+    <script src="libraries/jquery/jquery-3.7.1.js"></script>
+    <script src="libraries/jquery/jquery.session.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/image.css">
+    <link rel="stylesheet" href="styles/text.css">
+    <link rel="stylesheet" href="styles/button.css">
+    <link rel="stylesheet" href="styles/input.css">
+    <link rel="stylesheet" href="styles/popup.css">
+
+    <script src="./funciones/funciones.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            let siteId = sessionStorage.getItem("siteId");
+            let siteNom = sessionStorage.getItem("siteNom");
+            let siteMode = sessionStorage.getItem("siteMode");
+
+            let siteUsers = sessionStorage.getItem("siteUsers");
+            let siteFecha = sessionStorage.getItem("siteFecha");
+        });
+    </script>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <div class="row justify-content-center">
+                <div class="col-md-auto">
+                    <img src="assets/logos/logo_transparent.png" alt="Polytex Logo" class="img-polytex-ppal">
+                    <br>
+                    <div style="text-align: center">
+                        <img class="img-tecnico" src="assets/icons/user.png" alt="avatar">
+                        <p class="text-white" id="nombreUsuario" style="font-size: small"></p>
+                        <div class="div-select" style="padding-left: 30px; padding-top: 10px">
+                            <div class="text-bold">
+                                <br>
+                                <h4>ID: <span id="siteId"></span></h4>
+                                <h4>NOMBRE: <span id="siteNom"></span></h4>
+                                <h4>MODO: <span id="siteMode"></span></h4>
+
+                                <h4>NUM USUARIOS: <span id="siteUsers"></span></h4>
+                                <h4>ULTIMO UPDATE: <span id="siteFecha"></span></h4>
+                            </div>
+                            <br>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <button id="bt_logout" type="button" class="btn-danger"
+                                onclick="window.location.href = 'selection.html'"> Volver
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

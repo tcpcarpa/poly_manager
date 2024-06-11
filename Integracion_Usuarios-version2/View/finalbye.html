@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Final Program</title>
+
+    <link rel="icon" href="assets/logos/orange_transparent.png" type="image/x-icon"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="libraries/bootstrap/css/bootstrap.css">
+    <script src="libraries/bootstrap/js/bootstrap.js"></script>
+
+    <!-- jQuery -->
+    <script src="libraries/jquery/jquery-3.7.1.js"></script>
+    <script src="libraries/jquery/jquery.session.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/image.css">
+    <link rel="stylesheet" href="styles/text.css">
+    <link rel="stylesheet" href="styles/button.css">
+    <link rel="stylesheet" href="styles/input.css">
+    <link rel="stylesheet" href="styles/popup.css">
+
+    <script src="./funciones/funciones.js"></script>
+    <script src="./funciones/api.js"></script>
+    <script>
+        $(document).ready(function () {
+            let site = sessionStorage.getItem("siteName");
+            let siteValue = document.getElementById("site");
+            siteValue.textContent = site
+            let nom = sessionStorage.getItem("nom");
+            let nomValue = document.getElementById("nom");
+            nomValue.textContent = nom;
+
+            let resp = sessionStorage.getItem("site");
+            let r = JSON.parse(resp);
+
+            let siteInfoDiv = document.getElementById("siteInfo");
+
+            let fieldsString = r.substring(r.indexOf("{") + 1, r.lastIndexOf("}"));
+            let fieldsArray = fieldsString.split(", ");
+            fieldsArray.forEach(dato => {
+                let [clave, valor] = dato.split("=");
+                valor = valor.replace(/^'(.*)'$/, '$1').replace(/^"(.*)"$/, '$1');
+                let parrafo = document.createElement("p");
+                let claveSpan = document.createElement("span");
+                let valorSpan = document.createElement("span");
+
+                claveSpan.textContent = clave.toUpperCase() + ': ';
+                valorSpan.textContent = valor.toLowerCase();
+
+                claveSpan.classList.add("text-bold");
+                valorSpan.classList.add("text-keyboard");
+
+                parrafo.appendChild(claveSpan);
+                parrafo.appendChild(valorSpan);
+
+                siteInfoDiv.appendChild(parrafo);
+            });
+        });
+        console.log(sessionStorage)
+    </script>
+</head>
+<body>
+<div class="container-fluid" style="overflow: visible">
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <div class="col-md-auto">
+                <div class="row justify-content-center col-md-auto">
+                    <img src="assets/logos/logo_transparent.png" alt="Polytex Logo" class="img-polytex-ppal">
+                    <div style="text-align: center; overflow: auto">
+                        <img class="img-tecnico" src="assets/icons/user.png" alt="avatar">
+                        <p class="text-white" id="nom" style="font-size: small">nom</p>
+                        <p class="text-black-50" id="site" style="font-size: x-large">site</p>
+                        <h2 class="text-white-50" style="margin-bottom: 20px"> Conclusión: </h2>
+                        <br>
+                        <div class="row justify-content-center col-md-auto">
+                            <div class="button-orange-site" id="siteInfo"></div>
+                        </div>
+                        <br>
+                        <br>
+                        <button id="bt_bye" type="button" class="btn button-black-general"
+                                onclick="window.location.href= 'selection.html'">
+                            <img src="/assets/icons/check.png" alt="Volver al Menu" class="img-final">
+                        </button>
+                        <br>
+                        <br>
+                        <button id="bt_logout" type="button" class="btn-danger" onclick="closeAll()">
+                            <img src="/assets/icons/close.svg" alt="Salir y Cerrar" class="img-final">
+                        </button>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

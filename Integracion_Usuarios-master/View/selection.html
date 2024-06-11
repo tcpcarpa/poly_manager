@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Selection</title>
+
+    <link rel="icon" href="assets/logos/orange_transparent.png" type="image/x-icon"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="libraries/bootstrap/css/bootstrap.css">
+    <script src="libraries/bootstrap/js/bootstrap.js"></script>
+
+    <!-- jQuery -->
+    <script src="libraries/jquery/jquery-3.7.1.js"></script>
+    <script src="libraries/jquery/jquery.session.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/image.css">
+    <link rel="stylesheet" href="styles/text.css">
+    <link rel="stylesheet" href="styles/button.css">
+    <link rel="stylesheet" href="styles/input.css">
+    <link rel="stylesheet" href="styles/popup.css">
+
+    <script src="./funciones/funciones.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            const nom = sessionStorage.getItem("nom");
+            $('#nombreUsuario').text(nom);
+            const id = sessionStorage.getItem("siteId");
+            $('#siteId').text(id);
+        });
+    </script>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <div class="row justify-content-center">
+                <div class="col-md-auto">
+                    <img src="assets/logos/logo_transparent.png" alt="Polytex Logo" class="img-polytex-ppal">
+                    <br>
+                    <div style="text-align: center">
+                        <img class="img-tecnico" src="assets/icons/user.png" alt="avatar">
+                        <p class="text-white" id="nombreUsuario" style="font-size: small"></p>
+                        <br>
+                        <button class="button-orange-general" onclick="window.location.href = 'siteInfo.html'">ID: <span id="siteId"></span>
+                        </button>
+                        <br>
+                        <br>
+                        <br>
+                        <h2 class="text-white-50" id="titulo"> Escoja una Opción: </h2>
+                        <br>
+                        <button id="bt_volcar" type="button" class="button-black-general"
+                                onclick="window.location.href = 'tipoArchivo.html'"> Volcado de Usuarios
+                        </button>
+                        <br>
+                        <br>
+                        <button id="bt_grouLimit" type="button" class="button-black-general"
+                                onclick="window.location.href = 'gruplimit.html'"> Definición de Grupos Limite
+                        </button>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <button id="bt_logout" type="button" class="btn-danger" onclick="logout()">Salir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

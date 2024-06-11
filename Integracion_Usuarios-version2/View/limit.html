@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Limite</title>
+
+    <link rel="icon" href="assets/logos/orange_transparent.png" type="image/x-icon"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="libraries/bootstrap/css/bootstrap.css">
+    <script src="libraries/bootstrap/js/bootstrap.js"></script>
+
+    <!-- jQuery -->
+    <script src="libraries/jquery/jquery-3.7.1.js"></script>
+    <script src="libraries/jquery/jquery.session.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/image.css">
+    <link rel="stylesheet" href="styles/text.css">
+    <link rel="stylesheet" href="styles/button.css">
+    <link rel="stylesheet" href="styles/input.css">
+    <link rel="stylesheet" href="styles/popup.css">
+
+    <script src="./funciones/funciones.js"></script>
+    <script>
+        $(document).ready(function () {
+            const site = JSON.parse(sessionStorage.getItem("site"));
+            const siteValue = document.getElementById("site");
+            siteValue.textContent = site.name
+            const nom = sessionStorage.getItem("nom");
+            const nomValue = document.getElementById("nom");
+            nomValue.textContent = nom;
+
+
+        });
+    </script>
+
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row" style="overflow: visible">
+        <div class="col-md-12 form-group">
+            <div class="col-md-auto">
+                <div class="row justify-content-center col-md-auto">
+                    <img src="assets/logos/logo_transparent.png" alt="Polytex Logo" class="img-polytex-ppal">
+                    <div style="text-align: center; overflow: auto">
+                        <img class="img-tecnico" src="assets/icons/user.png" alt="avatar">
+                        <p class="text-white" id="nom" style="font-size: small">nom</p>
+                        <p class="text-black-50" id="site" style="font-size: x-large">site</p>
+                        <br>
+                        <h2 class="text-white-50" style="margin-bottom: 20px"> Escoja orden de LimitGrup: </h2>
+                        <br>
+                        <form id="loginForm" class="row justify-content-center">
+                            <div class="col-md-auto" style="margin-right: 80px">
+                                <p class="text-bold" style="text-align: right"><label
+                                        for="dep">DepartmentName:</label><input
+                                        type="text" style="margin-left: 12px" id="dep" required maxlength="1"
+                                        oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 2);"></p>
+                                <p class="text-bold" style="text-align: right"><label for="tit">Title:</label><input
+                                        type="text" style="margin-left: 12px" id="tit" required maxlength="1"
+                                        oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 2);"></p>
+                                <p class="text-bold" style="text-align: right"><label for="grup">Grupo
+                                    Limite:</label><input
+                                        type="text" style="margin-left: 12px" id="grup" required maxlength="1"
+                                        oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 2);"></p>
+                            </div>
+                        </form>
+                        <br>
+
+                        <button id="bt_login" type="button" class="btn btn-success" onclick="upLimOrder()">
+                            <img src="/assets/icons/check.png" alt="Ok" class="img-final">
+                        </button>
+                        <br>
+                        <br>
+                        <button id="bt_logout" type="button" class="btn-danger" onclick="logout()"> Salir
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

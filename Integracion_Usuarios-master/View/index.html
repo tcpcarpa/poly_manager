@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Polytex Plans</title>
+
+    <link rel="icon" href="assets/logos/orange_transparent.png" type="image/x-icon"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="libraries/bootstrap/css/bootstrap.css">
+    <script src="libraries/bootstrap/js/bootstrap.js"></script>
+
+    <!-- jQuery -->
+    <script src="libraries/jquery/jquery-3.7.1.js"></script>
+    <script src="libraries/jquery/jquery.session.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/image.css">
+    <link rel="stylesheet" href="styles/text.css">
+    <link rel="stylesheet" href="styles/button.css">
+    <link rel="stylesheet" href="styles/input.css">
+    <link rel="stylesheet" href="styles/popup.css">
+
+    <script src="./funciones/funciones.js"></script>
+
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <div class="row justify-content-center">
+                <div class="col-md-auto">
+                    <img src="assets/logos/logo_transparent.png" alt="Polytex Logo" class="img-polytex-ppal">
+                    <h2 class="text-white-50" id="titulo"> Introduzca Usuario y Contraseña </h2>
+                    <br>
+                    <div class="row justify-content-center">
+                    <form id="loginForm" class="col-md-auto">
+                        <p class="text-bold" id="name"><label for="username">Usuario:</label></p>
+                        <input type="text" id="username" name="username" required>
+                        <br>
+                        <br>
+                        <p class="text-bold" id="pass"><label for="password">Contraseña:</label></p>
+                        <input type="password" id="password" name="password" required>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <button id="bt_login" type="button" class="btn btn-success" onclick="login()">
+                            <img src="/assets/icons/check.png" alt="Ok" class="img-final">
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

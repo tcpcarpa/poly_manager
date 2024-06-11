@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Grupo Limite</title>
+
+    <link rel="icon" href="assets/logos/orange_transparent.png" type="image/x-icon"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="libraries/bootstrap/css/bootstrap.css">
+    <script src="libraries/bootstrap/js/bootstrap.js"></script>
+
+    <!-- jQuery -->
+    <script src="libraries/jquery/jquery-3.7.1.js"></script>
+    <script src="libraries/jquery/jquery.session.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/image.css">
+    <link rel="stylesheet" href="styles/text.css">
+    <link rel="stylesheet" href="styles/button.css">
+    <link rel="stylesheet" href="styles/input.css">
+    <link rel="stylesheet" href="styles/popup.css">
+
+    <script src="./funciones/funciones.js"></script>
+    <script>
+        $(document).ready(function () {
+            const nom = sessionStorage.getItem("nom");
+            $('#nombreUsuario').text(nom);
+            const id = sessionStorage.getItem("siteId");
+            $('#siteId').text(id);
+        });
+    </script>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <div class="row justify-content-center">
+                <div class="col-md-auto">
+                    <img src="assets/logos/logo_transparent.png" alt="Polytex Logo" class="img-polytex-ppal">
+                    <br>
+                    <div style="text-align: center">
+                        <img class="img-tecnico" src="assets/icons/user.png" alt="avatar">
+                        <p class="text-white" id="nombreUsuario" style="font-size: small"></p>
+                        <br>
+                        <div class="text-black-50">
+                            <h4>ID: <span id="siteId"></span></h4>
+                            <h4>Nombre: <span id="siteNom"></span></h4>
+                        </div>
+                        <br>
+                        <h2 class="text-white-50" style="text-align: center"> Elige el Archivo: </h2>
+                        <br>
+                        <input type="file" id="file-input" style="padding-right: 60px"/>
+                        <br>
+                        <br>
+                        <div class="col-md-auto">
+                            <button class="btn btn-success" style="margin-top: 10px" onclick="uploadLimit()">
+                                Cargar
+                            </button>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <div class="col-md-auto">
+                            <button id="bt_logout" type="button" class="btn-danger" onclick="window.location.href = 'selection.html'"> Volver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

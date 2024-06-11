@@ -1,0 +1,100 @@
+{ "data": [
+ {
+   "epc" :"300ED89F3350008001311D55",
+   "nombre_prenda" :"POLAR SOFTSHELL EUROPASTRY",
+   "talla" :"ER-S",
+   "unidad_operativa" :"LOTE EUROPASTRY",
+   "estado_prenda" :"Lavandose" 
+ },
+ {
+    "epc" :"FE7E2E0B1128F11400008AAA",
+	"nombre_prenda" :"CAMISETA EUROPASTRY",
+	"talla" :"ER-L",
+	"unidad_operativa" :"LOTE EUROPASTRY",
+	"estado_prenda" :"Limpio"
+ },
+ {
+    "epc" :"FE7E2E0B1128F114000098ED",
+	"nombre_prenda" :"CHALECO EUROPASTRY",
+	"talla" :"ER-L",
+	"unidad_operativa" :"LOTE EUROPASTRY",
+	"estado_prenda" :"Lavandose" 
+ },
+ {
+    "epc" :"300ED89F3350008001311C2B",
+	"nombre_prenda" :"POLAR SOFTSHELL EUROPASTRY",
+	"talla" :"ER-M",
+	"unidad_operativa" :"LOTE EUROPASTRY",
+	"estado_prenda" :"Lavandose" 
+ },
+ {
+    "epc" :"FE7E2E0B1128F114000095F7",
+	"nombre_prenda" :"TERMICA EUROPASTRY",
+	"talla" :"ER-S",
+	"unidad_operativa" :"LOTE EUROPASTRY",
+	"estado_prenda" :"Limpio" 
+ },
+ {
+    "epc" :"FE7E2E0B1128F11400002938",
+	"nombre_prenda" :"PANTALON 240 EUROPASTRY",
+	"talla" :"ER-S",
+	"unidad_operativa" :"LOTE EUROPASTRY",
+	"estado_prenda" :"Limpio"
+ },
+ {
+    "epc" :"FE7E2E0B1128F11400004031",
+	"nombre_prenda" :"CAMISETA EUROPASTRY",
+	"talla" :"ER-S",
+	"unidad_operativa" :"LOTE EUROPASTRY",
+	"estado_prenda" :"Lavandose"
+ },
+ {
+    "epc" :"FE7E2E0B1128F11400002B40", 
+	"nombre_prenda" :"PANTALON 240 EUROPASTRY",
+	"talla" :"ER-L",
+	"unidad_operativa" :"LOTE EUROPASTRY",
+	"estado_prenda" :"Lavandose" 
+ },
+ {
+    "epc" :"FE7E2E0B1128F11400008729",
+	"nombre_prenda" :"CHALECO EUROPASTRY",
+	"talla" :"ER-M",
+	"unidad_operativa" :"LOTE EUROPASTRY",
+	"estado_prenda" :"Lavandose" 
+ },
+ {
+    "epc" :"FE7E2E0B1128F114000046C5",
+	"nombre_prenda" :"TERMICA EUROPASTRY", 
+	"talla" :"ER-L",
+	"unidad_operativa" :"LOTE EUROPASTRY",
+	"estado_prenda" :"Lavandose"
+ },
+ {
+    "epc" :"FE7E2E0B1128F114000081D2",
+	"nombre_prenda" :"CHALECO EUROPASTRY",
+	"talla" :"ER-S",
+	"unidad_operativa" :"LOTE EUROPASTRY", 
+	"estado_prenda" :"Lavandose" 
+ },
+ {
+    "epc" :"FE7E2E0B1128F1140000BFC0",
+    "nombre_prenda" :"PANTALON 240 EUROPASTRY",
+    "talla" :"ER-M",
+    "unidad_operativa" :"LOTE EUROPASTRY",
+    "estado_prenda" :"Lavandose" 
+ },
+ {
+    "epc" :"FE7E2E0B1128F1140000444D",
+	"nombre_prenda" :"CAMISETA EUROPASTRY",
+	"talla" :"ER-M",
+	"unidad_operativa" :"LOTE EUROPASTRY",
+	"estado_prenda" :"Limpio" 
+ },
+ {
+    "epc" :"FE7E2E0B1128F1140000C18C",
+	"nombre_prenda" :"TERMICA EUROPASTRY",
+	"talla" :"ER-M",
+	"unidad_operativa" :"LOTE EUROPASTRY",
+	"estado_prenda" :"Limpio" 
+ }]
+}

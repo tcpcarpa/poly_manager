@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/IntegracionBack/IntegracionBack.iml" filepath="$PROJECT_DIR$/IntegracionBack/IntegracionBack.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Integracion_Usuarios.iml" filepath="$PROJECT_DIR$/Integracion_Usuarios.iml" />
+      <module fileurl="file://$PROJECT_DIR$/View.iml" filepath="$PROJECT_DIR$/View.iml" />
+    </modules>
+  </component>
+</project>

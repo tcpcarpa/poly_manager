@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>import</title>
+
+    <link rel="icon" href="assets/logos/orange_transparent.png" type="image/x-icon"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="libraries/bootstrap/css/bootstrap.css">
+    <script src="libraries/bootstrap/js/bootstrap.js"></script>
+
+    <!-- jQuery -->
+    <script src="libraries/jquery/jquery-3.7.1.js"></script>
+    <script src="libraries/jquery/jquery.session.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/image.css">
+    <link rel="stylesheet" href="styles/text.css">
+    <link rel="stylesheet" href="styles/button.css">
+    <link rel="stylesheet" href="styles/input.css">
+    <link rel="stylesheet" href="styles/popup.css">
+
+    <script src="./funciones/funciones.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            const nom = sessionStorage.getItem("nom");
+            $('#nombreUsuario').text(nom);
+            const id = sessionStorage.getItem("siteId");
+            $('#siteId').text(id);
+            const file = sessionStorage.getItem("file");
+            $('#file').text(file);
+        });
+    </script>
+
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <div class="row justify-content-center">
+                <div class="col-md-auto">
+                    <img src="assets/logos/logo_transparent.png" alt="Polytex Logo" class="img-polytex-ppal">
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <img class="col-md-auto" src="assets/icons/user.png" style="width: 120px;height: 100px" alt="usuario">
+            </div>
+            <div class="col-md-auto" style="text-align: center">
+                <span class="text-bold" id="nombreUsuario"> nom</span>
+            </div>
+            <br>
+            <div class="row justify-content-center">
+                <div class="col-md-auto" style="text-align: center">
+                    <h4 style="color: grey"> Site ID: <span id="siteId"> </span></h4>
+                    <h4 style="color: grey"> Archivo: <span id="file"> </span></h4>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <div class="row justify-content-center">
+            <div class="col-md-auto">
+<br>
+            <div class="col-md-auto form-group">
+                <h1 class="text-white-50">Importar Usuarios</h1>
+                <br>
+                <h1 class="text-bold" id="pass"><label for="password">Contraseña:</label></h1>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <br>
+            <br>
+            <div class="row justify-content-center">
+                <button id="bt_import" type="button" class="btn btn-success" onclick="importJson()">
+                    <img src="/assets/icons/check.png" alt="Importar" class="img-final">
+                </button>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="row justify-content-center">
+                <button id="bt_logout" type="button" class="btn-danger"
+                        style="font-size: x-large" onclick="logout()"> Salir
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tus Sites</title>
+
+    <link rel="icon" href="assets/logos/orange_transparent.png" type="image/x-icon"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="libraries/bootstrap/css/bootstrap.css">
+    <script src="libraries/bootstrap/js/bootstrap.js"></script>
+
+    <!-- jQuery -->
+    <script src="libraries/jquery/jquery-3.7.1.js"></script>
+    <script src="libraries/jquery/jquery.session.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/image.css">
+    <link rel="stylesheet" href="styles/text.css">
+    <link rel="stylesheet" href="styles/button.css">
+    <link rel="stylesheet" href="styles/input.css">
+    <link rel="stylesheet" href="styles/popup.css">
+
+    <script src="./funciones/funciones.js"></script>
+    <script src="./funciones/api.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            const nom = sessionStorage.getItem("nom");
+            const nomValue = document.getElementById("nom");
+            nomValue.textContent = nom;
+            const sitesSize = sessionStorage.getItem("sitesSize");
+            const numSitesValue = document.getElementById("sitesSize");
+            numSitesValue.textContent = sitesSize;
+            const lista = JSON.parse(sessionStorage.getItem("sitesList"));
+            console.log(sessionStorage)
+
+            createButtons(lista);
+        });
+    </script>
+
+</head>
+<body>
+
+<div class="container-fluid" style="overflow: auto">
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <div class="row justify-content-center">
+                <div class="col-md-auto">
+                    <img src="assets/logos/logo_transparent.png" alt="Polytex Logo" class="img-polytex-ppal">
+                    <br>
+                    <div class="row justify-content-center">
+                        <div class="button-orange-prof">
+                            <img class="img-tecnico-sup" src="assets/icons/user.png" alt="avatar">
+                            <p id="nom"></p>
+                            <p>Num Sites: <span id="sitesSize"></span></p>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <h2 class="text-white-50" style="text-align: center"> Selecciona un Site: </h2>
+                    <br>
+                    <div  type="button" id="buttons-container"></div>
+                    <br>
+                    <button id="bt_logout" type="button" class="btn-danger" onclick="logout()">
+                        <img src="/assets/icons/close.svg" alt="Salir" class="img-final">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

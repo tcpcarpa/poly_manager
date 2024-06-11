@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Grupo Limite</title>
+
+    <link rel="icon" href="assets/logos/orange_transparent.png" type="image/x-icon"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="libraries/bootstrap/css/bootstrap.css">
+    <script src="libraries/bootstrap/js/bootstrap.js"></script>
+
+    <!-- jQuery -->
+    <script src="libraries/jquery/jquery-3.7.1.js"></script>
+    <script src="libraries/jquery/jquery.session.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/image.css">
+    <link rel="stylesheet" href="styles/text.css">
+    <link rel="stylesheet" href="styles/button.css">
+    <link rel="stylesheet" href="styles/input.css">
+    <link rel="stylesheet" href="styles/popup.css">
+
+    <script src="./funciones/funciones.js"></script>
+    <script src="./funciones/api.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            let site = sessionStorage.getItem("siteName");
+            let siteValue = document.getElementById("site");
+            siteValue.textContent = site
+            let nom = sessionStorage.getItem("nom");
+            let nomValue = document.getElementById("nom");
+            nomValue.textContent = nom;
+
+            let dataString = JSON.parse(sessionStorage.getItem("userdef"));
+            console.log(dataString)
+            let content = dataString.substring(dataString.indexOf("{") + 1, dataString.lastIndexOf("}"));
+            content = content.replace(/,?\s*siteID="null"/g, "");
+            let fields = content.split(',').map(field => field.trim());
+
+            let divContenidoArray = document.getElementById("limit");
+            fields.forEach(function(elemento) {
+                let [campo, valor] = elemento.split("=");
+                let campoElemento = document.createElement("span");
+                campoElemento.textContent = campo;
+                campoElemento.classList.add("text-bold");
+                let valorElemento = document.createElement("span");
+                valorElemento.textContent = valor;
+                valorElemento.classList.add("text-keyboard");
+
+                let p = document.createElement("p");
+                p.appendChild(campoElemento);
+                p.appendChild(document.createTextNode(" : "));
+                p.appendChild(valorElemento);
+
+                divContenidoArray.appendChild(p);
+            });
+
+        });
+    </script>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row" style="overflow: visible">
+        <div class="col-md-12 form-group">
+            <div class="col-md-auto">
+                <div class="row justify-content-center col-md-auto">
+                    <img src="assets/logos/logo_transparent.png" alt="Polytex Logo" class="img-polytex-ppal">
+                    <div style="text-align: center; overflow: auto">
+                        <img class="img-tecnico" src="assets/icons/user.png" alt="avatar">
+                        <p class="text-white" id="nom" style="font-size: small">nom</p>
+                        <p class="text-black-50" id="site" style="font-size: x-large">site</p>
+                        <h2 class="text-white-50" style="text-align: center"> Elige el Archivo del Grupo Limite: </h2>
+                        <br>
+                        <div class="row justify-content-center">
+                        <div class="button-orange-site">
+                            <p style="font-weight: bold; font-size:18px; color: #052c65">Configuración y Orden de Campos</p><p id="limit"></p>
+                        </div>
+                        </div>
+                        <br>
+                        <br>
+                        <input type="file" id="file-input" style="padding-right: 60px"/>
+                        <br>
+                        <br>
+                        <br>
+                        <div class="col-md-auto">
+                            <button class="btn btn-success" style="margin-top: 10px" onclick="uploadLimit()">
+                                Cargar
+                            </button>
+                        </div>
+                        <br>
+                        <button id="bt_saltar" type="button" class="button-orange-general"
+                                onclick="window.location.href= 'preImport.html'">Saltar Paso
+                        </button>
+                        <br>
+                        <br>
+                        <div class="col-md-auto">
+                            <button id="bt_logout" type="button" class="btn-danger"
+                                    onclick="window.location.href = 'selection.html'"> Volver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

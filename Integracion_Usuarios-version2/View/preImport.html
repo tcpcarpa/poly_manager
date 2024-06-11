@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Importación</title>
+
+    <link rel="icon" href="assets/logos/orange_transparent.png" type="image/x-icon"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="libraries/bootstrap/css/bootstrap.css">
+    <script src="libraries/bootstrap/js/bootstrap.js"></script>
+
+    <!-- jQuery -->
+    <script src="libraries/jquery/jquery-3.7.1.js"></script>
+    <script src="libraries/jquery/jquery.session.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/image.css">
+    <link rel="stylesheet" href="styles/text.css">
+    <link rel="stylesheet" href="styles/button.css">
+    <link rel="stylesheet" href="styles/input.css">
+    <link rel="stylesheet" href="styles/popup.css">
+
+    <script src="./funciones/funciones.js"></script>
+    <script src="./funciones/api.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            let site = sessionStorage.getItem("siteName");
+            let siteValue = document.getElementById("site");
+            siteValue.textContent = site
+            let nom = sessionStorage.getItem("nom");
+            let nomValue = document.getElementById("nom");
+            nomValue.textContent = nom;
+
+            let mat = sessionStorage.getItem("site");
+            let file = sessionStorage.getItem("file");
+            let limit = sessionStorage.getItem("limit");
+
+            if (mat) {
+                let siteContent = mat.substring(5, mat.length - 1);
+                let keyValuePairs = siteContent.split(', ');
+                let siteObject = {};
+
+                keyValuePairs.forEach(pair => {
+                    let [key, value] = pair.split("='");
+                    siteObject[key] = value.substring(0, value.length - 1);
+                });
+
+                let numeroDeUsuarios = siteObject['numUsers'] || 'No hay Usuarios';
+                let lastupdate = siteObject['lastUpdate'] || 'No hay Update Realizado';
+                let lastlimit = siteObject['laslimit'] || 'No hay Limite Realizado';
+                let ultimoImporteEnAPI = siteObject['last_import'] || 'Sin Import Realizado';
+                let destinoArchivoGrupoLimite = siteObject['limit'] || 'Sin Destino de Grupo Limite';
+                let destinoArchivoUsuarios = siteObject['file'] || 'Sin Destino de Usuarios';
+                let updateAuto = siteObject['fecha_update'] || 'Sin Fecha de Actualización';
+
+                let archivoValue = document.getElementById("file");
+                archivoValue.textContent = file || destinoArchivoUsuarios;
+
+                let limitvalue = document.getElementById("limit");
+                limitvalue.textContent = limit || destinoArchivoGrupoLimite;
+
+                let numValue = document.getElementById("siteSize");
+                numValue.textContent = numeroDeUsuarios;
+
+                let fileValue = document.getElementById("import");
+                fileValue.textContent = ultimoImporteEnAPI;
+
+                let updateUsu = document.getElementById("usuarios");
+                updateUsu.textContent = lastupdate;
+
+                let updateLimite = document.getElementById("limite");
+                updateLimite.textContent = lastlimit;
+
+                let updateValue = document.getElementById("update");
+                updateValue.textContent = updateAuto;
+
+
+
+                let buttonOklim = document.getElementById("bt_lim");
+                let buttonOkUsu = document.getElementById("bt_usu");
+
+                if (limit) {
+                    buttonOklim.style.display = "none";
+                } else {
+                    buttonOklim.style.display = "block";
+                }
+                if (file) {
+                    buttonOkUsu.style.display = "none";
+                } else {
+                    buttonOkUsu.style.display = "block";
+                }
+            }
+        });
+        console.log(sessionStorage)
+    </script>
+</head>
+<body>
+
+<div class="container-fluid" style="overflow: visible">
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <div class="col-md-auto">
+                <div class="row justify-content-center col-md-auto">
+                    <img src="assets/logos/logo_transparent.png" alt="Polytex Logo" class="img-polytex-ppal">
+                    <div style="text-align: center; overflow: auto">
+                        <img class="img-tecnico" src="assets/icons/user.png" alt="avatar">
+                        <p class="text-white" id="nom" style="font-size: small">nom</p>
+                        <p class="text-black-50" id="site" style="font-size: x-large">site</p>
+                        <h2 class="text-white-50" style="margin-bottom: 20px"> Resumen </h2>
+                        <br>
+                        <div class="row justify-content-center">
+                            <div class="button-orange-site" style="padding-right: 20px" id="resumen">
+                                <p class="text-keyboard d-inline">Archivo Usuarios: </p>
+                                <p class="text-white d-inline" style="font-size: 14px" id="file"></p>
+                                <br>
+                                <p class="text-keyboard d-inline">Archivo Grupo-Limite: </p>
+                                <p class="text-white d-inline" style="font-size: 14px" id="limit"></p>
+                                <br>
+                                <p class="text-keyboard d-inline">Numero de Usuarios: </p>
+                                <p class="text-white d-inline" style="font-size: 14px" id="siteSize"></p>
+                                <br>
+                                <p class="text-keyboard d-inline">Última Actualización Usuarios: </p>
+                                <p class="text-white d-inline" style="font-size: 14px" id="usuarios"></p>
+                                <br>
+                                <p class="text-keyboard d-inline">Última Actualizaión Limite: </p>
+                                <p class="text-white d-inline" style="font-size: 14px" id="limite"></p>
+                                <br>
+                                <p class="text-keyboard d-inline">Último Importe: </p>
+                                <p class="text-white d-inline" style="font-size: 14px" id="import"></p>
+                                <br>
+                                <p class="text-keyboard d-inline">Automatización: </p>
+                                <p class="text-white d-inline" style="font-size: 14px" id="update"></p>
+                                <br>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <button id="bt_impor" type="button" class="btn btn-success" onclick="preImport()">
+                            <img src="/assets/icons/check.png" alt="Guardar" class="img-final">
+                        </button>
+                        <br>
+                        <br>
+                        <div class="row justify-content-center">
+                            <button id="bt_lim" type="button" class="btn button-black-general" onclick="window.location.href= 'gruplimit.html'">
+                                <img src="/assets/icons/check.png" alt="Establecer Grupo Limite" class="img-final">
+                            </button>
+                        </div>
+                        <div class="row justify-content-center">
+                            <button id="bt_usu" type="button" class="btn button-black-general" onclick="window.location.href= 'tipoArchivo.html'">
+                                <img src="/assets/icons/check.png" alt="Establecer Volcado Usuarios" class="img-final">
+                            </button>
+                        </div>
+                        <div class="row justify-content-center">
+                            <button id="bt_auto" type="button" class="btn button-orange-general" onclick="window.location.href= 'updatacion.html'">
+                                <img src="/assets/icons/check.png" alt="Establecer Automatización" class="img-final">
+                            </button>
+                        </div>
+                        <br>
+                        <button id="bet_noUser" type="button" class="btn btn-danger"
+                                onclick="window.location.href= 'paths.html'">
+                            <img src="/assets/icons/alert.png" alt="Atrás" class="img-final">
+                        </button>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
+
+</body>
+</html>

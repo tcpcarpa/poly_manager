@@ -1,0 +1,303 @@
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: none;
+    padding: 0;
+    margin: 0;
+
+}
+
+.button-close {
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    background-color: inherit;
+    margin-left: 10px;
+    user-select: none;
+}
+
+.button-general {
+    border-radius: 25px;
+    font-size: 17px;
+    font-weight: bold;
+    width: 100%;
+    max-width: 400px;
+    height: 75px;
+    user-select: none;
+}
+
+.button-orange-general {
+    border-radius: 25px;
+    font-size: 17px;
+    font-weight: bold;
+    width: 100%;
+    max-width: 500px;
+    height: 75px;
+    background-color: #FF6602;
+    color: white;
+    border: 0px !important;
+    user-select: none;
+}
+
+.button-orange-prof {
+    border-radius: 35px;
+    font-size: 14px;
+    width: 30%;
+    line-height: 10px;
+    background-color: #FF6602;
+    color: white;
+    border: 0px !important;
+    user-select: none;
+    padding: 14px;
+    text-align: center;
+}
+
+
+.button-orange-general:hover {
+    background-color: #ff9a57;
+    border: 0px !important;
+    color: white;
+    user-select: none;
+}
+
+.button-orange-general:disabled, button-orange-general[disabled] {
+    border-radius: 25px;
+    font-size: 17px;
+    width: 100%;
+    max-width: 500px;
+    height: 75px;
+    background-color: #ffa382;
+    color: white;
+    border: 0px;
+    font-weight: bold;
+    user-select: none;
+}
+
+.button-ge {
+    border-radius: 30px;
+    margin-bottom: 4px;
+    font-size: 14px;
+    width: 80%;
+    max-width: 500px;
+    height: 50px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding-left: 40px;
+    user-select: none;
+    text-transform: uppercase;
+}
+
+.button-black-general {
+    border-radius: 25px;
+    font-size: 17px;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;
+    height: 75px;
+    background-color: #000000;
+    color: white;
+    border: 0px;
+    font-weight: bold;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    user-select: none;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-black-general-sites {
+
+    border-radius: 25px;
+    font-size: 17px;
+    width: 100%;
+    max-width: 300px;
+    height: 75px;
+    background-color: #000000;
+    color: white;
+    border: 0px;
+    font-weight: bold;
+    user-select: none;
+    margin-bottom: 20px;
+
+}
+
+.button-black {
+    border-radius: 25px;
+    font-size: 2rem;
+    width: 100%;
+    max-width: 500px;
+    height: 75px;
+    background-color: #000000;
+    color: white;
+    border: 0px;
+    font-weight: bold;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    user-select: none;
+}
+
+.button-black-but {
+    border-radius: 25px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 500px;
+    height: 60px;
+    background-color: #000000;
+    color: white;
+    border: 0px;
+    text-align: left;
+    user-select: none;
+    padding: 20px;
+    text-transform: uppercase;
+}
+
+.button-black-but-but {
+    border-radius: 35px;
+    font-size: 16px;
+    width: 60%;
+    line-height: 24px;
+    background-color: #000000;
+    color: white;
+    border: 0px;
+    text-align: center;
+    user-select: none;
+    padding-top: 35px;
+    padding-bottom: 20px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+
+}
+
+.button-orange-site {
+    padding-top: 35px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    text-transform: uppercase;
+    border-radius: 35px;
+    font-size: 16px;
+    width: 60%;
+    line-height: 20px;
+    background-color: #FF6602;
+    color: white;
+    user-select: none;
+    text-align: left;
+
+}
+
+.button-black-general:hover {
+    background-color: #2f2f2f;
+    border: 1px solid #282828;
+    user-select: none;
+}
+
+.button-black:hover {
+    background-color: #2f2f2f;
+    border: 1px solid #282828;
+    user-select: none;
+}
+
+.button-black-general:disabled, button-black-general[disabled] {
+    border-radius: 25px;
+    font-size: 17px;
+    width: 100%;
+    max-width: 500px;
+    height: 75px;
+    background-color: #5d5d5d;
+    color: white;
+    border: 0px;
+    font-weight: bold;
+    user-select: none;
+}
+
+.button-black:disabled, button-black[disabled] {
+    border-radius: 25px;
+    font-size: 2rem;
+    width: 100%;
+    max-width: 500px;
+    height: 75px;
+    background-color: #5d5d5d;
+    color: white;
+    border: 0px;
+    font-weight: bold;
+    user-select: none;
+}
+
+.button-settings {
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    background-color: inherit;
+    transition: transform .7s ease-in-out;
+    margin-left: 10px;
+    user-select: none;
+}
+
+.button-settings:hover {
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    border: none;
+    user-select: none;
+}
+
+.button-keyboard {
+    border: none;
+    user-select: none;
+}
+
+.button-ip {
+    margin-top: 2rem;
+    border-radius: 25px;
+    font-size: 1.5rem;
+    width: 100%;
+    max-width: 500px;
+    height: 90px;
+    user-select: none;
+}
+
+.button-scroll {
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    background-color: inherit;
+    transition: transform .7s ease-in-out;
+    margin-left: 10px;
+    user-select: none;
+}
+
+/* Keyboard Styles */
+.button-black-kb {
+    display: block;
+    margin: 0 auto;
+    border-radius: 25%;
+    background-color: rgb(36, 36, 36);
+    color: white;
+    font-size: 30px;
+    height: 2.5em;
+    width: 2.5em;
+    user-select: none;
+}
+
+
+.button-tick {
+    display: block;
+    margin: 0 auto;
+    border-radius: 25%;
+    background-color: #28a745;
+    color: white;
+    font-size: 30px;
+    height: 2.5em;
+    width: 2.5em;
+    user-select: none;
+}
+
+#bt_success {
+    width: 7rem;
+    user-select: none;
+}
+
+/* ---------------- */

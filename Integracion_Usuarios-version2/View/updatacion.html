@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Card ID type</title>
+
+    <link rel="icon" href="assets/logos/orange_transparent.png" type="image/x-icon"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="libraries/bootstrap/css/bootstrap.css">
+    <script src="libraries/bootstrap/js/bootstrap.js"></script>
+
+    <!-- jQuery -->
+    <script src="libraries/jquery/jquery-3.7.1.js"></script>
+    <script src="libraries/jquery/jquery.session.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/image.css">
+    <link rel="stylesheet" href="styles/text.css">
+    <link rel="stylesheet" href="styles/button.css">
+    <link rel="stylesheet" href="styles/input.css">
+    <link rel="stylesheet" href="styles/popup.css">
+
+    <script src="./funciones/funciones.js"></script>
+    <script src="./funciones/api.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            let site = sessionStorage.getItem("siteName");
+            let siteValue = document.getElementById("site");
+            siteValue.textContent = site
+            let nom = sessionStorage.getItem("nom");
+            let nomValue = document.getElementById("nom");
+            nomValue.textContent = nom;
+
+            let siteInfoString = sessionStorage.getItem("site");
+            let siteInfoArray = siteInfoString.split(",");
+            let fechaUpdate;
+            for (const item of siteInfoArray) {
+                if (item.includes("fecha_update")) {
+                    const itemArray = item.split("=");
+                    fechaUpdate = itemArray[1];
+                    break;
+                }
+            }
+            let updateValue = document.getElementById("update");
+            let fechafinal = fechaUpdate.replace(/[{'"}]/g, "");
+            updateValue.textContent = fechafinal
+        });
+        console.log(sessionStorage)
+    </script>
+</head>
+<body>
+<div class="container-fluid" style="overflow: visible">
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <div class="col-md-auto">
+                <div class="row justify-content-center col-md-auto">
+                    <img src="assets/logos/logo_transparent.png" alt="Polytex Logo" class="img-polytex-ppal">
+                    <div style="text-align: center; overflow: auto">
+                        <img class="img-tecnico" src="assets/icons/user.png" alt="avatar">
+                        <p class="text-white" id="nom" style="font-size: small">nom</p>
+                        <p class="text-black-50" id="site" style="font-size: x-large">site</p>
+                        <h2 class="text-white-50" id="periodo"> Escoja Fecha de Actualización periodica:</h2>
+                        <br>
+                        <div class="row justify-content-center col-md-auto">
+                            <div id="mostrar updatación" class="button-orange-site">
+                                <p class="text-bold" style="text-align: center"> Perioricidad de Actualización:</p>
+                                <p id="update" class="text-black-50" style="text-align: center"></p>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <form>
+                            <label style="margin-left: 12px" class="text-white" for="dia">Días:</label>
+                            <input style="margin-left: 12px; width: 100px" type="number" id="dia" min="0" max="31" maxlength="2" placeholder="0"  required>
+                            <br>
+                            <br>
+                            <label class="text-white" for="hora">Horas:</label>
+                            <input style="margin-left: 12px; width: 100px" type="number" id="hora" min="0" max="23"
+                                   maxlength="2"
+                                   placeholder="0" required>
+                            <br>
+                            <br>
+                            <label style="margin-left: -18px" class="text-white" for="minuto">Minutos: </label>
+                            <input style="margin-left: 12px; width: 100px" type="number" id="minuto" min="0" max="59"
+                                   maxlength="2"
+                                   placeholder="0"  required>
+                        </form>
+                        <br>
+                        <br>
+                        <button id="bt_login" type="button" class="btn btn-success" onclick="obtenerDatosYEnviar()">
+                            <img src="/assets/icons/check.png" alt="Establecer Update" class="img-final">
+                        </button>
+                        <br>
+                        <br>
+                        <button id="bt_saltar" type="button" class="button-orange-general"
+                                onclick="window.location.href= 'preImport.html'">Saltar Paso
+                        </button>
+                        <br>
+                        <br>
+                        <button id="bt_logout" type="button" class="btn-danger"
+                                onclick="window.location.href= 'dos.html'">Atràs
+                        </button>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let inputDia = document.getElementById('dia');
+        inputDia.value = inputDia.placeholder;
+
+        let inputHora = document.getElementById('hora');
+        inputHora.value = inputHora.placeholder;
+
+        let inputMin = document.getElementById('minuto');
+        inputMin.value = inputMin.placeholder;
+    });
+
+    let inputDia = document.getElementById('dia');
+    inputDia.addEventListener('input', function () {
+        let valor = inputDia.value.trim();
+        valor = parseInt(valor, 10);
+        if (isNaN(valor)) {
+            valor = inputDia.placeholder;
+        } else if (valor < 0 || valor > 31) {
+            valor = 0;
+        }
+        inputDia.value = valor;
+    });
+
+    let inputHora = document.getElementById('hora');
+    inputHora.addEventListener('input', function () {
+        let valor = inputHora.value.trim();
+        valor = parseInt(valor, 10);
+        if (isNaN(valor)) {
+            valor = inputHora.placeholder;
+        } else if (valor < 0 || valor > 24) {
+            valor = 0;
+        }
+        inputHora.value = valor;
+    });
+
+    let inputMin = document.getElementById('minuto');
+    inputMin.addEventListener('input', function () {
+        let valor = inputMin.value.trim();
+        valor = parseInt(valor, 10);
+        if (isNaN(valor)) {
+            valor = inputMin.placeholder;
+        } else if (valor < 0 || valor > 60) {
+            valor = 0;
+        }
+        inputMin.value = valor;
+    });
+
+    function obtenerDatosYEnviar() {
+        let data = {
+            dia: inputDia.value,
+            hora: inputHora.value,
+            minuto: inputMin.value
+        };
+        console.log(data)
+        postUpdate(data);
+    }
+</script>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Tipo de Archivo</title>
+    <link rel="icon" href="assets/logos/orange_transparent.png" type="image/x-icon"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="libraries/bootstrap/css/bootstrap.css">
+    <script src="libraries/bootstrap/js/bootstrap.js"></script>
+
+    <!-- jQuery -->
+    <script src="libraries/jquery/jquery-3.7.1.js"></script>
+    <script src="libraries/jquery/jquery.session.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/image.css">
+    <link rel="stylesheet" href="styles/text.css">
+    <link rel="stylesheet" href="styles/button.css">
+    <link rel="stylesheet" href="styles/input.css">
+    <link rel="stylesheet" href="styles/popup.css">
+
+    <script src="./funciones/funciones.js"></script>
+    <script src="./funciones/fronts.js"></script>
+    <script src="./funciones/api.js"></script>
+    
+    <script>
+        $(document).ready(function () {
+            const site = sessionStorage.getItem("siteName");
+            const siteValue = document.getElementById("site");
+            siteValue.textContent = site
+            const nom = sessionStorage.getItem("nom");
+            const nomValue = document.getElementById("nom");
+            nomValue.textContent = nom;
+        });
+    </script>
+
+</head>
+<body>
+
+<div class="container-fluid" >
+    <div class="row" style="overflow: visible">
+        <div class="col-md-12 form-group">
+            <div class="col-md-auto" >
+                <div class="row justify-content-center col-md-auto" >
+                    <img src="assets/logos/logo_transparent.png" alt="Polytex Logo" class="img-polytex-ppal">
+                    <div style="text-align: center; overflow: auto">
+                        <img class="img-tecnico" src="assets/icons/user.png" alt="avatar">
+                        <p class="text-white" id="nom" style="font-size: small">nom</p>
+                        <p class="text-black-50" id="site" style="font-size: x-large">site</p>
+                        <h2 class="text-white-50"> Elige el Tipo de Archivo: </h2>
+                        <br>
+                        <div class="col-md-auto">
+                            <div id="file-popup" style="display: none">
+                                <div id="custom-file-upload" class="col-md-auto">
+                                    <br>
+                                    <input type="file" id="file-input"  accept=".csv, .sql"/>
+                                </div>
+                                <br>
+                                <br>
+                                <button class="btn btn-success" style="margin-top: 10px" onclick="uploadFile()">Cargar
+                                </button>
+                                <br>
+                                <br>
+                                <div class="popup" id="downloadPopup">
+                                    <div class="popup-content">
+                                        <p>Realizando Transaccion...</p>
+                                    </div>
+                                </div>
+                                <br>
+                                <button id="bt_logout" type="button" class="btn btn-danger"
+                                        onclick="window.location.href = 'tipoArchivo.html'">Volver
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="file-choose">
+                            <button id="btnCSV" class="btn button-black-general" onclick="openFilePopup('CSV')">
+                                CSV
+                            </button>
+                            <input type="file" id="fileInputCSV" style="display: none; margin-left: 200px">
+                            <br>
+                            <button id="btnSQL" class="btn button-black-general" onclick="openFilePopup('SQL')">
+                                SQL
+                            </button>
+                            <input type="file" id="fileInputSQL" style="display: none;"> <br>
+                            <br>
+                            <button id="bt_atras" type="button" class="btn btn-danger"
+                                    onclick="window.location.href = 'selection.html'">Volver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
